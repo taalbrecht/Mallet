@@ -33,7 +33,9 @@ public class TopicModel {
 		//  Note that the first parameter is passed as the sum over topics, while
 		//  the second is 
 		int numTopics = 100;
-		ParallelTopicModel model = new ParallelTopicModel(numTopics, 1.0, 0.01);
+		int superTopics = 10;
+		int subTopics = 100;
+		PAM4L model = new PAM4L(superTopics, subTopics);
 
 		model.addInstances(instances);
 
@@ -94,12 +96,12 @@ public class TopicModel {
 		}
 
 		// Create a new instance named "test instance" with empty target and source fields.
-		InstanceList testing = new InstanceList(instances.getPipe());
-		testing.addThruPipe(new Instance(topicZeroText.toString(), null, "test instance", null));
+		//InstanceList testing = new InstanceList(instances.getPipe());
+		//testing.addThruPipe(new Instance(topicZeroText.toString(), null, "test instance", null));
 
-		TopicInferencer inferencer = model.getInferencer();
-		double[] testProbabilities = inferencer.getSampledDistribution(testing.get(0), 10, 1, 5);
-		System.out.println("0\t" + testProbabilities[0]);
+		//TopicInferencer inferencer = model.getInferencer();
+		//double[] testProbabilities = inferencer.getSampledDistribution(testing.get(0), 10, 1, 5);
+		//System.out.println("0\t" + testProbabilities[0]);
 	}
 
 }
